@@ -243,6 +243,8 @@ uint32_t inline GetMemoryIndex(VkDevice* device, logging::Logger* log,
     if (!(required_index_bits & (1 << memory_index))) {
       continue;
     }
+    log->LogInfo("index: ", memory_index, " propertyFlags: ",
+                 properties.memoryTypes[memory_index].propertyFlags);
 
     if ((properties.memoryTypes[memory_index].propertyFlags &
          required_property_flags) != required_property_flags) {
