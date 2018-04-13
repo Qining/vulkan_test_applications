@@ -10,6 +10,7 @@ the creation and destruction of vulkan resources.
 - [BufferCreationMemory_test](BufferCreationMemory_test/README.md)
 - [CreateDestroyBufferView_test](CreateDestroyBufferView_test/README.md)
 - [CreateDestroyDescriptorSetLayout_test](CreateDestroyDescriptorSetLayout_test/README.md)
+- [CreateDestroyDescriptorSetUpdateTemplate_test](CreateDestroyDescriptorSetUpdateTemplate_test/README.md)
 - [CreateDestroyImage_test](CreateDestroyImage_test/README.md)
 - [CreateDestroyImageView_test](CreateDestroyImageView_test/README.md)
 - [CreateDestroyQueryPool_test](CreateDestroyQueryPool_test/README.md)

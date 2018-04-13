@@ -17,7 +17,8 @@
 
 #include <utility>
 
-static_assert(VK_VERSION_1_0 == 1 && VK_HEADER_VERSION == 48,
+static_assert(VK_VERSION_1_0 == 1 && VK_HEADER_VERSION == 70 &&
+                  VK_VERSION_1_1 == 1,
               "review the following to make sure that all enumerant values are "
               "covered after updating vulkan.h");
 
@@ -28,11 +29,15 @@ containers::vector<::VkFormat> AllVkFormats(containers::Allocator* allocator) {
   //                       0: VK_FORMAT_UNDEFINED
   //          1 -        184: assigned
   // 1000054000 - 1000054007: assigned
+  // 1000056000 - 1000056033: assigned
   formats.reserve(VK_FORMAT_RANGE_SIZE + 8);
   for (uint64_t i = VK_FORMAT_BEGIN_RANGE; i <= VK_FORMAT_END_RANGE; ++i) {
     formats.push_back(static_cast<::VkFormat>(i));
   }
   for (uint64_t i = 1000054000ul; i <= 1000054007ul; ++i) {
+    formats.push_back(static_cast<::VkFormat>(i));
+  }
+  for (uint64_t i = 1000056000ul; i <= 1000056033ul; ++i) {
     formats.push_back(static_cast<::VkFormat>(i));
   }
 
@@ -77,7 +82,8 @@ containers::vector<::VkImageCreateFlags> AllVkImageCreateFlagCombinations(
     containers::Allocator* allocator) {
   containers::vector<::VkImageCreateFlags> flags(allocator);
   const uint64_t min = VK_IMAGE_CREATE_SPARSE_BINDING_BIT;
-  const uint64_t max = VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT << 1;
+  const uint64_t max = VK_IMAGE_CREATE_SAMPLE_LOCATIONS_COMPATIBLE_DEPTH_BIT_EXT
+                       << 1;
   flags.reserve(max - 1);
   for (uint64_t i = min; i < max; ++i) {
     flags.push_back(static_cast<::VkImageCreateFlags>(i));

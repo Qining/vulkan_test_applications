@@ -13,5 +13,8 @@
 # limitations under the License.
 #
 
-add_vulkan_subdirectory(vkUpdateDescriptorSets_test)
-add_vulkan_subdirectory(vkUpdateDescriptorSetWithTemplate_test)
+add_gapid_test(CreateDestroyDescriptorUpdateTemplate_test
+  SOURCES main.cpp
+  LIBS
+    vulkan_helpers
+)

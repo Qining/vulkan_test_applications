@@ -58,9 +58,10 @@ int main_entry(const entry::entry_data* data) {
     info.queueCreateInfoCount = 1;
     info.pQueueCreateInfos = &queue_info;
     ::VkDevice raw_device;
-    LOG_EXPECT(==, data->log, instance->vkCreateDevice(devices[0], &info,
-                                                       nullptr, &raw_device),
-               VK_SUCCESS);
+    LOG_EXPECT(
+        ==, data->log,
+        instance->vkCreateDevice(devices[0], &info, nullptr, &raw_device),
+        VK_SUCCESS);
 
     vulkan::VkDevice device(
         vulkan::CreateDefaultDevice(data->root_allocator, instance, false));
@@ -117,6 +118,9 @@ int main_entry(const entry::entry_data* data) {
         device->vkDestroySwapchainKHR(device, (VkSwapchainKHR)VK_NULL_HANDLE,
                                       nullptr);
       }
+
+      device->vkDestroyDescriptorUpdateTemplate(
+          device, VkDescriptorUpdateTemplate(VK_NULL_HANDLE), nullptr);
     }
   }
   data->log->LogInfo("Application Shutdown");

@@ -6,3 +6,4 @@ the binding of vulkan resources.
 # Tests
 
 - [vkUpdateDescriptorSets_test](vkUpdateDescriptorSets_test/README.md)
+- [vkUpdateDescriptorSetWithTemplate_test](vkUpdateDescriptorSetWithTemplate_test/README.md)

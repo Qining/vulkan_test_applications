@@ -353,7 +353,10 @@ class DeviceFunctions {
         CONSTRUCT_LAZY_FUNCTION(vkGetEventStatus),
         CONSTRUCT_LAZY_FUNCTION(vkSetEvent),
         CONSTRUCT_LAZY_FUNCTION(vkResetEvent),
-        CONSTRUCT_LAZY_FUNCTION(vkGetRenderAreaGranularity)
+        CONSTRUCT_LAZY_FUNCTION(vkGetRenderAreaGranularity),
+        CONSTRUCT_LAZY_FUNCTION(vkCreateDescriptorUpdateTemplate),
+        CONSTRUCT_LAZY_FUNCTION(vkDestroyDescriptorUpdateTemplate),
+        CONSTRUCT_LAZY_FUNCTION(vkUpdateDescriptorSetWithTemplate)
 #undef CONSTRUCT_LAZY_FUNCTION
   {
   }
@@ -454,6 +457,9 @@ class DeviceFunctions {
   LAZY_FUNCTION(vkSetEvent);
   LAZY_FUNCTION(vkResetEvent);
   LAZY_FUNCTION(vkGetRenderAreaGranularity);
+  LAZY_FUNCTION(vkCreateDescriptorUpdateTemplate);
+  LAZY_FUNCTION(vkDestroyDescriptorUpdateTemplate);
+  LAZY_FUNCTION(vkUpdateDescriptorSetWithTemplate);
 #undef LAZY_FUNCTION
 };
 

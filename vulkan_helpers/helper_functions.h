@@ -44,6 +44,13 @@ void MemoryClear(T* val) {
 VkInstance CreateEmptyInstance(containers::Allocator* allocator,
                                LibraryWrapper* _wrapper);
 
+// Create an empty Vulkan 1.1 instance. Vulkan functions that are resolved by
+// the created instance will be stored in the space allocated by the given
+// |allocator|. The |allocator| must continue to exist until the instance is
+// destroied.
+VkInstance CreateEmptyOneDotOneInstance(containers::Allocator* allocator,
+                                        LibraryWrapper* _wrapper);
+
 // Creates an instance with the swapchain and surface layers enabled. Vulkan
 // functions that are resolved through the created instance will be stored in
 // the space allocated by the given |allocator|. The |allocator| must continue

@@ -125,3 +125,11 @@ class AllDestroy(GapitTest):
                     destroySwapchain=require(self.next_call_of(
                         "vkDestroySwapchainKHR"))
                     require_equal(0, destroySwapchain.int_swapchain)
+
+                destroy_descriptor_update_template = require(
+                    self.next_call_of("vkDestroyDescriptorUpdateTemplate"))
+                require_not_equal(0, destroy_descriptor_update_template.int_device)
+                require_equal(
+                    0,
+                    destroy_descriptor_update_template.int_descriptorUpdateTemplate)
+                require_equal(0, destroy_descriptor_update_template.int_pAllocator)

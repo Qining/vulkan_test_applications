@@ -50,6 +50,34 @@ VkInstance CreateEmptyInstance(containers::Allocator* allocator,
   return vulkan::VkInstance(allocator, raw_instance, nullptr, wrapper);
 }
 
+VkInstance CreateEmptyOneDotOneInstance(containers::Allocator* allocator,
+                                        LibraryWrapper* wrapper) {
+  // Test a non-nullptr pApplicationInfo
+  VkApplicationInfo app_info{VK_STRUCTURE_TYPE_APPLICATION_INFO,
+                             nullptr,
+                             "TestApplication",
+                             1,
+                             "Engine",
+                             0,
+                             VK_MAKE_VERSION(1, 1, 0)};
+
+  VkInstanceCreateInfo info{VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
+                            nullptr,
+                            0,
+                            &app_info,
+                            0,
+                            nullptr,
+                            0,
+                            nullptr};
+
+  ::VkInstance raw_instance;
+  LOG_ASSERT(==, wrapper->GetLogger(),
+             wrapper->vkCreateInstance(&info, nullptr, &raw_instance),
+             VK_SUCCESS);
+  // vulkan::VkInstance will handle destroying the instance
+  return vulkan::VkInstance(allocator, raw_instance, nullptr, wrapper);
+}
+
 VkInstance CreateDefaultInstance(containers::Allocator* allocator,
                                  LibraryWrapper* wrapper) {
   // Similar to Empty Instance, but turns on the platform specific

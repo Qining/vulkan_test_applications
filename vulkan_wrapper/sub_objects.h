@@ -173,6 +173,18 @@ struct DescriptorSetLayoutTraits {
 using VkDescriptorSetLayout =
     VkSubObject<DescriptorSetLayoutTraits, DeviceTraits>;
 
+struct DescriptorUpdateTemplateTraits {
+  using type = ::VkDescriptorUpdateTemplate;
+  using destruction_function_pointer_type =
+    LazyDeviceFunction<PFN_vkDestroyDescriptorUpdateTemplate>*;
+  static destruction_function_pointer_type get_destruction_function(
+      DeviceFunctions* functions) {
+    return &functions->vkDestroyDescriptorUpdateTemplate;
+  }
+};
+using VkDescriptorUpdateTemplate =
+  VkSubObject<DescriptorUpdateTemplateTraits, DeviceTraits>;
+
 struct SurfaceTraits {
   using type = ::VkSurfaceKHR;
   using destruction_function_pointer_type =
