@@ -1,6 +1,6 @@
 # Vulkan Test Applications
 
-[![Linux Native/Android Build Status](https://travis-ci.org/google/vulkan_test_applications.svg)](https://travis-ci.org/google/vulkan_test_applications "Linux Native/Android Build Status")
+[![Linux Native/Android Build Status](https://travis-ci.org/Qining/vulkan_test_applications.svg)](https://travis-ci.org/Qining/vulkan_test_applications "Linux Native/Android Build Status")
 
 `Vulkan Test Applications` is a repository that contains several sets of
 Vulkan applications.
