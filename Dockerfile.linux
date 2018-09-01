@@ -23,6 +23,6 @@ RUN cmake -GNinja -DCMAKE_BUILD_TYPE=Release \
 ninja install && rm -rf /root/shaderc
 
 WORKDIR /root/vulkan_test_applications/build-linux
-RUN cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_GLSL_COMPILER=glslc
+RUN cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_GLSL_COMPILER=glslc ..
 
-CMD ["ninja"]
+CMD ["ninja", "hahaha"]

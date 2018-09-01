@@ -25,6 +25,7 @@ ninja install && rm -rf /root/shaderc
 WORKDIR /root/sdk
 RUN wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && \
 unzip sdk-tools-linux-3859397.zip && rm -f sdk-tools-linux-3859397.zip && \
+echo y | ./tools/bin/sdkmanager --licenses && \
 ./tools/bin/sdkmanager "platforms;android-21" "build-tools;26.0.1" ndk-bundle && \
 ./tools/bin/sdkmanager "cmake;3.6.4111459"
 
