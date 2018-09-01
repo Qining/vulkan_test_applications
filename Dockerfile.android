@@ -32,6 +32,6 @@ echo y | ./tools/bin/sdkmanager --licenses && \
 WORKDIR /root/vulkan_test_applications/build-android
 RUN cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DANDROID_SDK=/root/sdk \
   -DANDROID_NDK=/root/sdk/ndk-bundle -DBUILD_APKS=ON \
-  -DCMAKE_GLSL_COMPILER=glslc
+  -DCMAKE_GLSL_COMPILER=glslc ..
 
 CMD ["ninja"]
