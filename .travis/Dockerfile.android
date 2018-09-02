@@ -12,7 +12,7 @@ git clone https://github.com/google/googletest.git /root/shaderc/third_party/goo
 git clone https://github.com/google/glslang.git /root/shaderc/third_party/glslang && \
 git clone https://github.com/KhronosGroup/SPIRV-Tools.git /root/shaderc/third_party/spirv-tools && \
 git clone https://github.com/KhronosGroup/SPIRV-Headers.git /root/shaderc/third_party/spirv-tools/external/spirv-headers && \
-git clone --recursive https://github.com/google/vulkan_test_applications
+git clone --recursive https://github.com/Qining/vulkan_test_applications
 
 WORKDIR /root/shaderc/build
 RUN cmake -GNinja -DCMAKE_BUILD_TYPE=Release \
@@ -25,8 +25,7 @@ WORKDIR /root/sdk
 RUN wget -q https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && \
 unzip -qq sdk-tools-linux-3859397.zip && rm -f sdk-tools-linux-3859397.zip && \
 yes | ./tools/bin/sdkmanager "platforms;android-21" "build-tools;26.0.1" ndk-bundle && \
-yes | ./tools/bin/sdkmanager "cmake;3.6.4111459" && \
-yes | ./tools/bin/sdkmanager --licenses
+yes | ./tools/bin/sdkmanager "cmake;3.6.4111459"
 
 WORKDIR /root/vulkan_test_applications/build-android
 RUN cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DANDROID_SDK=/root/sdk \
