@@ -3,9 +3,8 @@ FROM ubuntu
 ARG target
 
 RUN apt-get update && \
-apt-get install -y git gcc g++ ninja-build python python-pip cmake libxcb1-dev openjdk-8-jdk wget unzip
-
-RUN pip install pillow
+apt-get install -y git gcc g++ ninja-build python python-pip cmake libxcb1-dev openjdk-8-jdk wget unzip && \
+pip install pillow
 
 WORKDIR /root
 RUN git clone https://github.com/google/shaderc.git && \
@@ -23,11 +22,10 @@ RUN cmake -GNinja -DCMAKE_BUILD_TYPE=Release \
 ninja install && rm -rf /root/shaderc
 
 WORKDIR /root/sdk
-RUN wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && \
+RUN wget -q https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && \
 unzip sdk-tools-linux-3859397.zip && rm -f sdk-tools-linux-3859397.zip && \
-echo y | ./tools/bin/sdkmanager --licenses && \
-./tools/bin/sdkmanager "platforms;android-21" "build-tools;26.0.1" ndk-bundle && \
-./tools/bin/sdkmanager "cmake;3.6.4111459"
+yes | ./tools/bin/sdkmanager "platforms;android-21" "build-tools;26.0.1" ndk-bundle && \
+yes | ./tools/bin/sdkmanager "cmake;3.6.4111459"
 
 WORKDIR /root/vulkan_test_applications/build-android
 RUN cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DANDROID_SDK=/root/sdk \
