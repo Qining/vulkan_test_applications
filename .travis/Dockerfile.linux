@@ -2,8 +2,8 @@ FROM ubuntu
 
 ARG target
 
-RUN apt-get update && \
-apt-get install -y git gcc g++ ninja-build python python-pip cmake libxcb1-dev
+RUN apt-get update -qq && \
+apt-get install -qq -y git gcc g++ ninja-build python python-pip cmake libxcb1-dev
 
 RUN pip install pillow
 

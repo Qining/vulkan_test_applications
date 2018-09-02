@@ -7,7 +7,7 @@ services:
   - docker
 
 script:
-  - docker build -f Dockerfile.linux -t buildtest:linux .
+  - docker build -f Dockerfile.linux -t buildtest:linux ./.travis
   - docker run --rm buildtest:linux ninja
-  - docker build -f Dockerfile.android -t buildtest:android .
+  - docker build -f Dockerfile.android -t buildtest:android ./.travis
   - docker run --rm buildtest:android ninja
